@@ -20,7 +20,7 @@ with open("recived_file", 'wb') as f:
 	print("file opened")
 	i = 0
 	while i<2:
-		if(i>=1):
+		if(i>=1): #create a file and send to server from client
 			ans =input("Do you want to create a new file?")
 			if ans == 'y' or 'Y':
 				ent = input(str("Enter file name including file format:"))
@@ -39,7 +39,7 @@ with open("recived_file", 'wb') as f:
 				i += 1
 			else :
 				i += 1
-		else:
+		else: #receive from server to client
 			print("receiving data.....")
 			data2 = s.recv(1024)
 			print("data=%s",(data2))
@@ -53,7 +53,7 @@ with open("recived_file", 'wb') as f:
 	
 f.close()
 print("Success get file")
-
+#chat between server and client (only type 'quit' from client can end the chat)
 msg = input(">>")
 while msg.lower().strip() != 'quit':
 	x = datetime.datetime.now()
