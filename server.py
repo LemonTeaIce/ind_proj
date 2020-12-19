@@ -17,7 +17,7 @@ print("Done Listen!!")
 
 c, addr = s.accept()
 
-print("Connection from: "+ str(addr))
+print("Connection from: "+ str(addr)) 
 c.send(b"Hi, I'm Server. Thank You!!\n")
 
 buffer = c.recv(1024)
@@ -28,7 +28,7 @@ print("Client say:",(buffer1))
 i = 0
 j=0
 while i<2:
-	if(i>=1):
+	if(i>=1): #receive 1 file from client to server
 		file = input(str("Please rename the file:"))
 		fi = open(file,'w')
 		fi1 = c.recv(1024)
@@ -42,7 +42,7 @@ while i<2:
 		j += 1
 		if j == 1:
 			break
-	else:
+	else: # send 1 file from server to client
 		filename = "text1.txt"
 		f = open(filename, 'rb')
 		l = f.read(1024)
@@ -56,7 +56,7 @@ while i<2:
 		c.send(b"Thank you !")
 		i += 1
 
-while True:
+while True: #chat between server and client & client only can end the connection
 	buffer2 = c.recv(1024).decode()
 	if not buffer2:
 		break
